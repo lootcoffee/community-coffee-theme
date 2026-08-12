@@ -1,0 +1,23 @@
+{{ 'community-coffee.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  #cc-strip-{{ section.id }} { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 2px 0; }
+  @media (min-width: 750px) { #cc-strip-{{ section.id }} { grid-template-columns: repeat({{ section.blocks.size | at_least: 1 }}, 1fr); } }
+  #cc-strip-{{ section.id }} img { width: 100%; display: block; aspect-ratio: 1/1; object-fit: cover; }
+{%- endstyle -%}
+
+<section id="cc-strip-{{ section.id }}">
+  {%- for block in section.blocks -%}
+    {%- if block.settings.image != blank -%}
+      <div {{ block.shopify_attributes }}>{{ block.settings.image | image_url: width: 1200 | image_tag: sizes: '33vw', widths: '400,700,1200', alt: block.settings.image.alt }}</div>
+    {%- endif -%}
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "CC Photo strip",
+  "tag": "section",
+  "blocks": [ { "type": "photo", "name": "Photo", "settings": [ { "type": "image_picker", "id": "image", "label": "Photo" } ] } ],
+  "presets": [{ "name": "CC Photo strip", "blocks": [ { "type": "photo" }, { "type": "photo" }, { "type": "photo" } ] }]
+}
+{% endschema %}

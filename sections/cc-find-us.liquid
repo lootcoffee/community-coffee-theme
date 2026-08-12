@@ -1,0 +1,69 @@
+{{ 'community-coffee.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  #cc-find-{{ section.id }} { background: {{ section.settings.bg }}; color: {% if section.settings.bg == '#121212' or section.settings.bg == '#FF2100' %}#fff{% else %}var(--ink-900){% endif %}; padding: clamp(48px,7vw,96px) var(--gutter-mobile); }
+  #cc-find-{{ section.id }} .cc-find__inner { max-width: var(--max-content); margin: 0 auto; display: grid; gap: var(--space-7); grid-template-columns: 1fr; }
+  @media (min-width: 750px) { #cc-find-{{ section.id }} { padding-left: var(--gutter-desktop); padding-right: var(--gutter-desktop); } #cc-find-{{ section.id }} .cc-find__inner { grid-template-columns: 1fr 1fr; gap: var(--space-8); } }
+  #cc-find-{{ section.id }} h2 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--display-tracking); line-height: var(--display-leading); font-size: var(--display-md); margin: 0 0 var(--space-5); color: inherit; }
+  #cc-find-{{ section.id }} .cc-find__addr { font-size: var(--body-lg); margin: 0 0 var(--space-5); }
+  #cc-find-{{ section.id }} .cc-find__hours { width: 100%; border-collapse: collapse; }
+  #cc-find-{{ section.id }} .cc-find__hours th { text-align: left; font-family: var(--font-narrow); font-size: var(--label-sm); font-weight: 700; text-transform: uppercase; letter-spacing: var(--label-tracking-wide); padding: var(--space-2) 0; border-bottom: 1px solid rgba(128,128,128,.3); }
+  #cc-find-{{ section.id }} .cc-find__hours td { text-align: right; font-family: var(--font-mono); font-size: var(--mono-md); font-variant-numeric: tabular-nums; padding: var(--space-2) 0; border-bottom: 1px solid rgba(128,128,128,.3); }
+  #cc-find-{{ section.id }} .cc-find__map { aspect-ratio: 4/3; }
+  #cc-find-{{ section.id }} .cc-find__map iframe, #cc-find-{{ section.id }} .cc-find__map img { width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
+  #cc-find-{{ section.id }} .cc-find__ctas { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+{%- endstyle -%}
+
+<section id="cc-find-{{ section.id }}">
+  <div class="cc-find__inner">
+    <div>
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.address != blank -%}<div class="cc-find__addr rte">{{ section.settings.address }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <table class="cc-find__hours">
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}><th scope="row">{{ block.settings.day }}</th><td>{{ block.settings.hours }}</td></tr>
+          {%- endfor -%}
+        </table>
+      {%- endif -%}
+      <div class="cc-find__ctas">
+        {%- if section.settings.cta_label != blank -%}<a class="button" href="{{ section.settings.cta_link | default: '#' }}">{{ section.settings.cta_label }}</a>{%- endif -%}
+      </div>
+    </div>
+    <div class="cc-find__map">
+      {%- if section.settings.map_embed != blank -%}
+        {{ section.settings.map_embed }}
+      {%- elsif section.settings.map_image != blank -%}
+        {{ section.settings.map_image | image_url: width: 1400 | image_tag: alt: 'Map' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CC Find us",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find us" },
+    { "type": "richtext", "id": "address", "label": "Address", "default": "<p>Subiaco, Perth WA</p>" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#FFFFFF" },
+    { "type": "text", "id": "cta_label", "label": "Button", "default": "Get directions" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "image_picker", "id": "map_image", "label": "Map image" },
+    { "type": "html", "id": "map_embed", "label": "Map embed", "info": "Paste a Google Maps iframe. Overrides the map image." }
+  ],
+  "blocks": [
+    { "type": "day", "name": "Opening hours row", "settings": [
+      { "type": "text", "id": "day", "label": "Day", "default": "Mon – Fri" },
+      { "type": "text", "id": "hours", "label": "Hours", "default": "6.30 – 2.00" } ] }
+  ],
+  "presets": [{
+    "name": "CC Find us",
+    "blocks": [
+      { "type": "day", "settings": { "day": "Mon – Fri", "hours": "6.30 – 2.00" } },
+      { "type": "day", "settings": { "day": "Saturday", "hours": "7.00 – 2.00" } },
+      { "type": "day", "settings": { "day": "Sunday", "hours": "7.00 – 1.00" } }
+    ]
+  }]
+}
+{% endschema %}

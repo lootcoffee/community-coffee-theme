@@ -1,0 +1,51 @@
+{{ 'community-coffee.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  #cc-story-{{ section.id }} { max-width: var(--max-content); margin: 0 auto; padding: clamp(48px,7vw,96px) var(--gutter-mobile); }
+  #cc-story-{{ section.id }} .cc-story__grid { display: grid; gap: var(--space-7); grid-template-columns: 1fr; align-items: center; }
+  @media (min-width: 750px) { #cc-story-{{ section.id }} { padding-left: var(--gutter-desktop); padding-right: var(--gutter-desktop); } #cc-story-{{ section.id }} .cc-story__grid { grid-template-columns: 1.1fr 1fr; gap: var(--space-8); } {% if section.settings.image_first %}#cc-story-{{ section.id }} .cc-story__media { order: -1; }{% endif %} }
+  #cc-story-{{ section.id }} .cc-story__rule { display: flex; align-items: center; gap: var(--space-3); }
+  #cc-story-{{ section.id }} .cc-story__rule::after { content: ""; flex: 1; height: 1.5px; background: var(--red-500); }
+  #cc-story-{{ section.id }} h2 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: var(--display-tracking); line-height: var(--display-leading); font-size: var(--display-md); margin: var(--space-5) 0 var(--space-4); }
+  #cc-story-{{ section.id }} .cc-story__body { font-size: var(--body-lg); max-width: 52ch; }
+  #cc-story-{{ section.id }} .cc-story__body p { margin: 0 0 var(--space-4); }
+  #cc-story-{{ section.id }} .cc-story__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
+  #cc-story-{{ section.id }} .cc-story__tag { font-family: var(--font-narrow); font-size: var(--label-sm); font-weight: 700; text-transform: uppercase; letter-spacing: var(--label-tracking-wide); border: 1px solid var(--ink-900); border-radius: 999px; padding: 5px var(--space-3); }
+  #cc-story-{{ section.id }} .cc-story__media img { width: 100%; display: block; aspect-ratio: {{ section.settings.ratio }}; object-fit: cover; }
+{%- endstyle -%}
+
+<section id="cc-story-{{ section.id }}">
+  <div class="cc-story__grid">
+    <div>
+      {%- if section.settings.label != blank -%}<div class="cc-story__rule"><span class="cc-eyebrow">{{ section.settings.label }}</span></div>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2>{{ section.settings.heading }}</h2>{%- endif -%}
+      <div class="cc-story__body rte">{{ section.settings.body }}</div>
+      {%- if section.settings.tags != blank -%}
+        <div class="cc-story__tags">
+          {%- assign tag_list = section.settings.tags | split: ',' -%}
+          {%- for t in tag_list -%}<span class="cc-story__tag">{{ t | strip }}</span>{%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.image != blank -%}
+      <div class="cc-story__media">{{ section.settings.image | image_url: width: 1400 | image_tag: sizes: '(min-width: 750px) 45vw, 100vw', widths: '600,900,1400', alt: section.settings.image.alt }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CC Story",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Section label", "default": "Who we are" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A room that runs on regulars" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>We open at half six and we don't stop until the bread runs out. Same beans, same faces, same order you had last Tuesday.</p>" },
+    { "type": "text", "id": "tags", "label": "Tags", "info": "Comma separated", "default": "Dine in, Takeaway, Dog friendly" },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "select", "id": "ratio", "label": "Photo ratio", "default": "4/5", "options": [
+      { "value": "4/5", "label": "Portrait 4:5" }, { "value": "1/1", "label": "Square" }, { "value": "3/2", "label": "Landscape 3:2" } ] },
+    { "type": "checkbox", "id": "image_first", "label": "Photo on the left", "default": false }
+  ],
+  "presets": [{ "name": "CC Story" }]
+}
+{% endschema %}

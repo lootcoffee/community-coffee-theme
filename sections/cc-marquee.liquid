@@ -1,0 +1,41 @@
+{{ 'community-coffee.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  #cc-marquee-{{ section.id }} { background: var(--red-500); color: #fff; overflow: hidden; border-top: 1.5px solid var(--red-500); border-bottom: 1.5px solid var(--red-500); }
+  #cc-marquee-{{ section.id }} .cc-marquee__track { display: flex; gap: var(--space-6); padding: var(--space-3) 0; width: max-content; animation: cc-marquee-{{ section.id }} {{ section.settings.speed }}s linear infinite; }
+  #cc-marquee-{{ section.id }} .cc-marquee__item { font-family: var(--font-narrow); font-size: var(--label-md); font-weight: 700; text-transform: uppercase; letter-spacing: var(--label-tracking-wide); white-space: nowrap; display: flex; align-items: center; gap: var(--space-6); }
+  #cc-marquee-{{ section.id }} .cc-marquee__item::after { content: "●"; font-size: 8px; opacity: .7; }
+  @keyframes cc-marquee-{{ section.id }} { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { #cc-marquee-{{ section.id }} .cc-marquee__track { animation: none; } }
+{%- endstyle -%}
+
+<section id="cc-marquee-{{ section.id }}">
+  <div class="cc-marquee__track">
+    {%- for i in (1..2) -%}
+      {%- for block in section.blocks -%}
+        <span class="cc-marquee__item" {% if forloop.first and i == 1 %}{% else %}aria-hidden="true"{% endif %}>{{ block.settings.text }}</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CC Marquee strip",
+  "tag": "section",
+  "settings": [
+    { "type": "range", "id": "speed", "label": "Scroll duration", "min": 10, "max": 90, "step": 5, "unit": "s", "default": 40 }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Message", "settings": [ { "type": "text", "id": "text", "label": "Message", "default": "Open 6.30–2 daily" } ] }
+  ],
+  "presets": [{
+    "name": "CC Marquee strip",
+    "blocks": [
+      { "type": "item", "settings": { "text": "Open 6.30–2 daily" } },
+      { "type": "item", "settings": { "text": "Roasted with Loot" } },
+      { "type": "item", "settings": { "text": "Bring your own cup" } },
+      { "type": "item", "settings": { "text": "No app, just come in" } }
+    ]
+  }]
+}
+{% endschema %}
