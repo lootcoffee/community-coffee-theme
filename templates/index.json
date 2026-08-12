@@ -1,61 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +33,185 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "cc_hero_wLqdqD": {
+      "type": "cc-hero",
+      "name": "CC Hero",
+      "settings": {
+        "eyebrow": "Subiaco · Perth",
+        "heading": "Coffee, done every single morning",
+        "height": 620,
+        "cta_1_label": "See the menu",
+        "cta_1_link": "",
+        "cta_2_label": "Find us",
+        "cta_2_link": ""
+      }
+    },
+    "cc_marquee_nj6nRb": {
+      "type": "cc-marquee",
+      "blocks": {
+        "item_CQiVnz": {
+          "type": "item",
+          "settings": {
+            "text": "Open 6.30–2 daily"
+          }
+        },
+        "item_rDLVQK": {
+          "type": "item",
+          "settings": {
+            "text": "Roasted with Loot"
+          }
+        },
+        "item_aDrYwL": {
+          "type": "item",
+          "settings": {
+            "text": "Bring your own cup"
+          }
+        },
+        "item_mJFfnb": {
+          "type": "item",
+          "settings": {
+            "text": "No app, just come in"
+          }
+        }
+      },
+      "block_order": [
+        "item_CQiVnz",
+        "item_rDLVQK",
+        "item_aDrYwL",
+        "item_mJFfnb"
+      ],
+      "name": "CC Marquee strip",
+      "settings": {
+        "speed": 40
+      }
+    },
+    "cc_story_paFMGW": {
+      "type": "cc-story",
+      "name": "CC Story",
+      "settings": {
+        "label": "Who we are",
+        "heading": "A room that runs on regulars",
+        "body": "<p>We open at half six and we don't stop until the bread runs out. Same beans, same faces, same order you had last Tuesday.</p>",
+        "tags": "Dine in, Takeaway, Dog friendly",
+        "ratio": "4/5",
+        "image_first": false
+      }
+    },
+    "cc_menu_board_KLddtP": {
+      "type": "cc-menu-board",
+      "blocks": {
+        "column_hCXDcG": {
+          "type": "column",
+          "settings": {
+            "title": "Coffee",
+            "items": "Espresso | 4.0\nFlat white | 5.0\nBatch brew | 4.5 | Changes weekly"
+          }
+        },
+        "column_8Yz9jy": {
+          "type": "column",
+          "settings": {
+            "title": "Coffee",
+            "items": "Espresso | 4.0\nFlat white | 5.0\nBatch brew | 4.5 | Changes weekly"
+          }
+        },
+        "column_XrpJ8F": {
+          "type": "column",
+          "settings": {
+            "title": "Coffee",
+            "items": "Espresso | 4.0\nFlat white | 5.0\nBatch brew | 4.5 | Changes weekly"
+          }
+        }
+      },
+      "block_order": [
+        "column_hCXDcG",
+        "column_8Yz9jy",
+        "column_XrpJ8F"
+      ],
+      "name": "CC Menu board",
+      "settings": {
+        "heading": "On the board today",
+        "stamp": "Until 2pm",
+        "bg": "#F1EEE7",
+        "columns": 3
+      }
+    },
+    "cc_photo_strip_fgEnL8": {
+      "type": "cc-photo-strip",
+      "blocks": {
+        "photo_djdQUf": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_EdMM8r": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_g7aUGr": {
+          "type": "photo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "photo_djdQUf",
+        "photo_EdMM8r",
+        "photo_g7aUGr"
+      ],
+      "name": "CC Photo strip",
+      "settings": {}
+    },
+    "cc_find_us_UMBqrB": {
+      "type": "cc-find-us",
+      "blocks": {
+        "day_fdpezg": {
+          "type": "day",
+          "settings": {
+            "day": "Mon – Fri",
+            "hours": "6.30 – 2.00"
+          }
+        },
+        "day_kCNPaC": {
+          "type": "day",
+          "settings": {
+            "day": "Saturday",
+            "hours": "7.00 – 2.00"
+          }
+        },
+        "day_BejQb3": {
+          "type": "day",
+          "settings": {
+            "day": "Sunday",
+            "hours": "7.00 – 1.00"
+          }
+        }
+      },
+      "block_order": [
+        "day_fdpezg",
+        "day_kCNPaC",
+        "day_BejQb3"
+      ],
+      "name": "CC Find us",
+      "settings": {
+        "heading": "Find us",
+        "address": "<p>Subiaco, Perth WA</p>",
+        "bg": "#FFFFFF",
+        "cta_label": "Get directions",
+        "cta_link": "",
+        "map_embed": ""
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "cc_hero_wLqdqD",
+    "cc_marquee_nj6nRb",
+    "cc_story_paFMGW",
+    "cc_menu_board_KLddtP",
+    "cc_photo_strip_fgEnL8",
+    "cc_find_us_UMBqrB"
   ]
 }
