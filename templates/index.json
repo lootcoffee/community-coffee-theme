@@ -9,39 +9,11 @@
  */
 {
   "sections": {
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "all",
-        "products_to_show": 8,
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
     "cc_hero_wLqdqD": {
       "type": "cc-hero",
       "name": "CC Hero",
       "settings": {
+        "image": "shopify://shop_images/DSCF4352_a08a25b5-d965-49f0-b0b3-db266320aadc.jpg",
         "eyebrow": "Subiaco · Perth",
         "heading": "Coffee, done every single morning",
         "height": 620,
@@ -98,6 +70,7 @@
         "heading": "A room that runs on regulars",
         "body": "<p>We open at half six and we don't stop until the bread runs out. Same beans, same faces, same order you had last Tuesday.</p>",
         "tags": "Dine in, Takeaway, Dog friendly",
+        "image": "shopify://shop_images/pass-service.jpg",
         "ratio": "4/5",
         "image_first": false
       }
@@ -115,14 +88,14 @@
         "column_8Yz9jy": {
           "type": "column",
           "settings": {
-            "title": "Coffee",
+            "title": "Food",
             "items": "Espresso | 4.0\nFlat white | 5.0\nBatch brew | 4.5 | Changes weekly"
           }
         },
         "column_XrpJ8F": {
           "type": "column",
           "settings": {
-            "title": "Coffee",
+            "title": "Specials",
             "items": "Espresso | 4.0\nFlat white | 5.0\nBatch brew | 4.5 | Changes weekly"
           }
         }
@@ -145,15 +118,21 @@
       "blocks": {
         "photo_djdQUf": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/room-01.jpg"
+          }
         },
         "photo_EdMM8r": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/espresso-pour.jpg"
+          }
         },
         "photo_g7aUGr": {
           "type": "photo",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/room-02.jpg"
+          }
         }
       },
       "block_order": [
@@ -200,13 +179,12 @@
         "address": "<p>Subiaco, Perth WA</p>",
         "bg": "#FFFFFF",
         "cta_label": "Get directions",
-        "cta_link": "",
-        "map_embed": ""
+        "cta_link": "https://maps.app.goo.gl/kLFqsFxbSLGUDN3b7",
+        "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.45890065385!2d115.82500019999999!3d-31.948445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32a58430583153%3A0x5ad70f9ec2f6101f!2sCommunity%20Coffee%20Co!5e0!3m2!1sen!2sau!4v1786575788056!5m2!1sen!2sau\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>"
       }
     }
   },
   "order": [
-    "featured_collection",
     "cc_hero_wLqdqD",
     "cc_marquee_nj6nRb",
     "cc_story_paFMGW",
