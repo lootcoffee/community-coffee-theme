@@ -256,6 +256,10 @@
               <div>
                 <h2 class="visually-hidden" id="HeaderCountryLabel">{{ 'localization.country_label' | t }}</h2>
                 {%- render 'country-localization', localPosition: 'HeaderCountry' -%}
+                {%- if social_links -%}
+                {% render 'social-icons' %}
+                {%- endif -%}
+
               </div>
             {%- endform -%}
           </localization-form>
