@@ -3634,12 +3634,13 @@ details-disclosure > details {
   100% {
     transform: translateX(100%) scaleX(0);
   }
-  
+
+
+}
+
 /* Hide search, account, and cart icons in header */
 .header__icon--search,
 .header__icon--account,
 .header__icon--cart {
   display: none !important;
-}
-
 }
