@@ -497,3 +497,10 @@ h1, .h1, h2, .h2, .banner__heading, .cc-hero__title { line-height: 0.95; }
 
 /* --- Menu board: keep the note tied to its row --------------------- */
 .cc-board__note { max-width: 40ch; }
+
+/* Hide search, account, and cart icons in header */
+.header__icon--search,
+.header__icon--account,
+.header__icon--cart {
+  display: none !important;
+}
