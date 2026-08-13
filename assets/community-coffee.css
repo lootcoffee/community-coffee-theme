@@ -307,8 +307,23 @@ button.shopify-payment-button__button--unbranded {
   padding-top: var(--space-4);
   padding-bottom: var(--space-4);
   border-bottom: 1.5px solid var(--ink-900);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--space-6);
 }
-.header__heading-link { padding: 0; }
+.header__heading-link { padding: 0; border-bottom: none !important; }
+.header__heading-logo, .header__heading-logo img, .header__heading-logo-wrapper img {
+  height: 40px !important;
+  max-height: 40px !important;
+  width: auto !important;
+}
+.header__inline-menu, .header__inline-menu *, .header__menu-item, .list-menu__item,
+.header__icons, .header__icons *, .header-actions, .header-actions * {
+  border-bottom: 0 !important;
+  text-decoration: none !important;
+}
+.header__inline-menu { margin-left: auto; display: flex; gap: var(--space-5); }
 .header__menu-item, .header__active-menu-item, .list-menu__item--link {
   font-family: var(--font-narrow);
   font-size: var(--label-md);
@@ -317,9 +332,10 @@ button.shopify-payment-button__button--unbranded {
   letter-spacing: var(--label-tracking);
   color: var(--ink-900);
 }
-.header__menu-item:hover, .header__active-menu-item { color: var(--red-500); text-decoration: none; }
-.header__menu-item span { text-decoration: none !important; }
-.header__inline-menu .list-menu__item--active { text-decoration: none; border-bottom: 2px solid var(--red-500); }
+.header__menu-item:hover, .header__active-menu-item { color: var(--red-500); }
+.header__icons { display: flex; align-items: center; gap: var(--space-4); margin-left: 0; flex-wrap: nowrap; }
+.cc-header-ig { display: flex; align-items: center; color: var(--ink-900); border-bottom: none !important; margin-left: var(--space-2); }
+.cc-header-ig:hover { color: var(--red-500); }
 
 /* Announcement bar as the brand marquee strip */
 .announcement-bar, .utility-bar {
@@ -440,3 +456,44 @@ button.shopify-payment-button__button--unbranded {
 .pagination__item { font-family: var(--font-mono); border-radius: 0; }
 .pagination__item--current:after { background: var(--red-500); }
 ::selection { background: var(--red-500); color: var(--white); }
+
+
+/* ===================================================================
+   v2 — fixes from the first Shopify preview
+   =================================================================== */
+
+/* Align our sections to Dawn's page width so section content lines up
+   with the header logo and nav. Dawn's --page-width is a setting. */
+:root { --cc-page: min(var(--max-content), var(--page-width, 1200px)); }
+
+/* Display type: Anton's caps are tall, so 0.88 leading collides on
+   two-line headlines. Give multi-line display type room. */
+h1, .h1, h2, .h2, .banner__heading, .cc-hero__title { line-height: 0.95; }
+
+/* --- Footer -------------------------------------------------------- */
+.footer__content-top { padding-bottom: var(--space-6); }
+.footer .newsletter-form__field-wrapper .field__input {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,.4);
+  color: #fff;
+}
+.footer .newsletter-form__field-wrapper .field__input::placeholder { color: var(--ink-300); }
+.footer .newsletter-form__field-wrapper .field__label { color: var(--ink-300); }
+.footer .newsletter-form__button { color: #fff; }
+.footer .newsletter-form__button:hover { color: var(--red-500); }
+.footer__list-social .list-social__link { color: #fff; }
+.footer__list-social .list-social__link:hover { color: var(--red-500); }
+
+/* Payment icons: Dawn renders them full-colour, which fights the palette. */
+.footer__payment .list-payment__item svg { opacity: .45; filter: grayscale(1); }
+
+/* Shop Pay "Follow on shop" is bright purple — knock it back if left on.
+   Better: turn it off in Customize → Footer → Enable Follow on Shop. */
+.footer shop-follow-button, .footer .shop-follow-button { filter: grayscale(1) contrast(.9); opacity: .8; }
+
+/* Footer logo, if you add a Brand information block */
+.footer__content-top .footer-block--brand img,
+.footer-block__brand-info img { max-width: 180px; height: auto; }
+
+/* --- Menu board: keep the note tied to its row --------------------- */
+.cc-board__note { max-width: 40ch; }
